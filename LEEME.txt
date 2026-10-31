@@ -1,0 +1,32 @@
+TIK ALEX — paquete de publicación actualizado
+
+Archivos:
+- index.html: página principal con registro e inicio de sesión de demostración.
+- juego.html: demo de carreras con acceso a la cuenta de demostración.
+- cuentas.js: lógica local de cuentas para probar las pantallas.
+
+PUBLICACIÓN: sube todos los archivos juntos (o el ZIP completo) a Netlify Drop.
+
+IMPORTANTE SOBRE CUENTAS:
+- Este es solo un prototipo local. Las cuentas se guardan en el navegador/dispositivo; no se sincronizan entre celulares ni constituyen autenticación segura de producción.
+- El sistema marca lenerarmando192@gmail.com como creador gratuito solo dentro de esta demostración. No es una verificación de identidad segura.
+- No hay verificación automática de pagos PayPal ni bloqueo seguro de compradores. Hace falta backend, base de datos, autenticación y confirmación de pago del servidor antes de vender acceso.
+- No uses contraseñas que utilices en otros servicios.
+
+PAGOS Y TIKTOK LIVE:
+- El botón de compra abre el enlace PayPal proporcionado por el usuario; confirma que el importe sea exactamente $2 USD.
+- No hay conexión real a TikTok LIVE. Para detectar Tap Tap y regalos reales se necesita integración compatible/autorizada y servidor.
+- Los contadores y botones del juego son de demostración, no eventos reales.
+
+
+ACTUALIZACIÓN DE CONFIGURACIÓN TIKTOK (31-10-2026):
+- Campo para guardar el usuario público @alexberry090 en el navegador. Esto NO inicia sesión ni conecta TikTok LIVE.
+- Tabla de acciones configuradas: 100 Tap Tap=Turbo 1; Quiereme=Turbo 5; Galaxia=Portal; Perfume=Turbo 6; Collar=Turbo 5; compartir=Turbo 1.
+- Botón para simular un compartir en modo prueba.
+- La conexión real sigue pendiente de un proveedor compatible/autorizado y un servidor de eventos. No se simulan eventos reales.
+
+
+ACTUALIZACIÓN: botón privado «PROBAR JUEGO»
+- El botón se muestra únicamente cuando la sesión local está iniciada con lenerarmando192@gmail.com.
+- Se ocultaron los enlaces públicos de prueba.
+- IMPORTANTE: esta comprobación ocurre en el navegador y es solo una demostración; no es un control de acceso seguro. Para impedir que otros lo falsifiquen se necesita autenticación y autorización en servidor (por ejemplo Firebase Authentication + reglas/funciones).
