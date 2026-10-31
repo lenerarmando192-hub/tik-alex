@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TIK ALEX — Carreras Interactivas TikTok</title>
+<style>
+:root{--cyan:#35e8ff;--pink:#ff397d;--gold:#ffd66b;--bg:#070b14;--panel:#101a2b;--muted:#91a5bf}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#203e60 0,#0b1424 42%,#050810 78%);color:#f5f8ff;font-family:Inter,system-ui,Arial,sans-serif}
+header{text-align:center;padding:22px 14px 18px;border-bottom:1px solid #29435c;background:linear-gradient(180deg,#0b1628dd,#08101c99)}
+.brand{font-size:10px;letter-spacing:7px;color:var(--cyan);font-weight:900}h1{margin:9px 0 5px;font-size:clamp(23px,5vw,42px);letter-spacing:1px;text-shadow:0 0 25px #28dfff66}header p{margin:0;color:#a9bbd1;font-size:11px;letter-spacing:3px}
+main{max-width:1240px;margin:auto;padding:16px;display:grid;grid-template-columns:minmax(0,1.8fr) minmax(280px,.85fr);gap:15px}
+.panel{background:linear-gradient(145deg,#142238f2,#0a1220f5);border:1px solid #2c4561;border-radius:17px;padding:15px;box-shadow:0 16px 45px #0007}
+.headrow{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}.pill{font-size:10px;letter-spacing:1px;padding:7px 10px;border-radius:30px;border:1px solid #236b7c;color:var(--cyan);background:#08202a}
+.track-wrap{position:relative;min-height:510px;border-radius:14px;overflow:hidden;background:radial-gradient(ellipse at 50% 50%,#1a3450 0,#0b1828 57%,#070d17 100%);border:1px solid #39536e}
+.city{position:absolute;inset:0 0 55%;opacity:.55;background:linear-gradient(transparent 65%,#0b1421),repeating-linear-gradient(90deg,transparent 0 28px,#293c53 29px 34px,transparent 35px 63px)}
+.city:after{content:"";position:absolute;inset:20% 0 0;background:repeating-linear-gradient(90deg,transparent 0 17px,#38dfff55 18px 20px,transparent 21px 44px)}
+.track{position:absolute;left:7%;right:7%;top:12%;bottom:8%;border-radius:50%;background:#242d38;border:3px solid #718092;box-shadow:0 0 0 7px #101923,0 0 0 10px #455363,inset 0 0 22px #000}
+.track:before{content:"";position:absolute;inset:12px;border:2px dashed #d4dce5a8;border-radius:50%}
+.track:after{content:"";position:absolute;inset:31px;border:1px solid #aeb9c733;border-radius:50%}
+.infield{position:absolute;left:30%;right:30%;top:34%;bottom:27%;border-radius:50%;background:radial-gradient(ellipse,#203d59,#0c1726 75%);border:1px solid #47708c;display:grid;place-items:center;text-align:center;box-shadow:inset 0 0 30px #000}
+.infield strong{font-size:clamp(18px,3.5vw,32px);letter-spacing:4px;color:#eafaff;text-shadow:0 0 18px #00cfff}.infield small{display:block;color:#91b7d1;font-size:9px;letter-spacing:4px;margin-top:5px}
+.startline{position:absolute;left:8%;top:48%;height:48px;width:13px;z-index:3;background:repeating-conic-gradient(#fff 0 25%,#111 0 50%) 0/12px 12px;transform:rotate(-8deg)}
+.car{position:absolute;z-index:5;width:108px;height:55px;transform:translate(-50%,-50%);filter:drop-shadow(0 8px 7px #000d);transition:left .12s linear,top .12s linear}
+.car svg{width:100%;height:100%;overflow:visible}.driver{position:absolute;left:50%;bottom:49px;transform:translateX(-50%);white-space:nowrap;background:#07111fee;border:1px solid #5b7997;border-radius:20px;padding:4px 8px;font-size:10px;font-weight:800;box-shadow:0 0 12px #00dfff44}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.stat{background:#091321;border:1px solid #263d57;border-radius:11px;padding:10px}.stat small{display:block;color:var(--muted);font-size:9px;letter-spacing:1px}.stat b{font-size:20px}
+.controls{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.btn{border:0;border-radius:9px;padding:11px 13px;font-weight:900;cursor:pointer;color:#06121d;background:linear-gradient(135deg,#4af0ff,#00a9d0)}.btn.secondary{background:#1c3049;color:#eff8ff;border:1px solid #405d7b}.btn:disabled{opacity:.4;cursor:not-allowed}
+h2{font-size:13px;letter-spacing:1px;margin:0 0 12px}.muted{font-size:11px;color:var(--muted)}input{width:100%;padding:12px;border-radius:9px;background:#07111e;border:1px solid #34516e;color:white;margin:8px 0}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid #26384d;font-size:12px}.cup{color:var(--gold);font-weight:900}.feed{max-height:120px;overflow:auto;color:#c0cee0;font-size:11px}.feed div{padding:5px 0;border-bottom:1px solid #26384d}
+.notice{font-size:10px;line-height:1.5;color:#f8d99a;background:#2b2113;border:1px solid #6a5127;padding:10px;border-radius:9px;margin-top:12px}
+.winner{display:none;text-align:center;margin-top:12px;padding:15px;border:1px solid var(--gold);border-radius:12px;background:linear-gradient(90deg,#46320b,#17243a,#46320b)}.winner.show{display:block}.winner b{font-size:25px;color:var(--gold)}
+@media(max-width:820px){main{grid-template-columns:1fr;padding:10px}.track-wrap{min-height:420px}.track{left:4%;right:4%;border-width:3px}.infield{left:25%;right:25%}.car{width:85px}.driver{font-size:9px}}
+</style></head>
+<body>
+<header><div class="brand">TIK ALEX • LIVE RACING EXPERIENCE</div><h1>🏁 CARRERAS INTERACTIVAS TIKTOK 🏎️</h1><p>ENTRA A LA PISTA · COMPITE · CONQUISTA LA COPA</p></header>
+<main>
+<section class="panel">
+<div class="headrow"><b>🏟️ CIRCUITO NOCTURNO</b><span class="pill" id="mode">MODO DEMOSTRACIÓN</span><span class="pill" id="lap">VUELTA 0 / 3</span></div>
+<div class="track-wrap" id="arena"><div class="city"></div><div class="track"></div><div class="startline"></div><div class="infield"><div><strong>TIK ALEX</strong><small>GRAND PRIX</small></div></div></div>
+<div class="stats"><div class="stat"><small>PILOTOS</small><b id="count">0</b></div><div class="stat"><small>CARRERAS</small><b id="races">0</b></div><div class="stat"><small>ESTADO</small><b id="state">Abiertas</b></div></div>
+<div class="controls"><button class="btn" id="start">▶ INICIAR CARRERA</button><button class="btn secondary" id="pause">Ⅱ PAUSAR</button><button class="btn secondary" id="reset">↻ NUEVA CARRERA</button><button class="btn secondary" id="reg">CERRAR INSCRIPCIONES</button></div>
+<div class="winner" id="winner">🏆 <b id="winnerName"></b><div>¡CAMPEÓN DEL GRAND PRIX!</div></div>
+<div class="notice">MODO DEMOSTRACIÓN: registra pilotos manualmente. Para leer comentarios reales de TikTok LIVE hace falta configurar una integración autorizada y un servidor; esta página todavía no está conectada a TikTok.</div>
+</section>
+<aside style="display:grid;gap:14px;align-content:start">
+<section class="panel"><h2>👥 REGISTRO DE PILOTOS</h2><div class="muted">Escribe el usuario de TikTok</div><input id="username" maxlength="22" placeholder="@usuario"><button class="btn" id="join" style="width:100%">＋ ENTRAR A LA CARRERA</button></section>
+<section class="panel"><h2>🏆 CLASIFICACIÓN</h2><div id="ranking" class="muted">Esperando pilotos...</div></section>
+<section class="panel"><h2>🚘 GARAJE DE SUPERCARROS</h2><div id="garage"></div></section>
+<section class="panel"><h2>📡 ACTIVIDAD</h2><div class="feed" id="feed">Sistema preparado. Inscripciones abiertas.</div></section>
+</aside></main>
+<script>
+const KEY='tikalex_cups_v3';
+const cars=[['Lamborghini Revuelto','#e8c542'],['Ferrari SF90','#ed334b'],['McLaren 750S','#ff8a24'],['Bugatti Chiron','#3989ff'],['Porsche 911 GT3','#e8edf2'],['Mercedes-AMG GT','#a58aff'],['BMW M4','#45d6b0'],['Audi RS e-tron GT','#d5dce8'],['Tesla Roadster','#ef4b9a'],['Aston Martin Valkyrie','#6bc49a']];
+let db={cups:{},races:0};try{db={...db,...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch(e){}
+let drivers=[],open=true,running=false,paused=false,raf=0,last=0,finished=[];
+const $=id=>document.getElementById(id);
+function save(){localStorage.setItem(KEY,JSON.stringify(db))}
+function log(s){let e=document.createElement('div');e.textContent='› '+s;$('feed').prepend(e)}
+function esc(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function add(name){name=name.trim().replace(/^@/,'');if(!name||!open||running||drivers.length>=8||drivers.some(d=>d.name.toLowerCase()===name.toLowerCase()))return false;let cups=db.cups[name]||0,car=cars[Math.min(9,Math.floor(cups/2))];drivers.push({name,cups,car:car[0],color:car[1],progress:0,speed:.000025+Math.random()*.000008});log('@'+name+' entró con '+car[0]);draw();return true}
+function carSvg(color){return `<svg viewBox="0 0 140 58"><path d="M7 35 18 22 43 18 58 8Q81 3 101 15L124 23 136 35 128 45H13Z" fill="${color}" stroke="#f5fbff" stroke-width="1.8"/><path d="m48 18 14-9q19-3 33 6l14 11H43Z" fill="#142b42" stroke="#b8eaff" stroke-width="1"/><path d="M14 33h116" stroke="#fff" stroke-width="2" opacity=".7"/><circle cx="34" cy="44" r="8" fill="#050912" stroke="#b9c9d8" stroke-width="3"/><circle cx="111" cy="44" r="8" fill="#050912" stroke="#b9c9d8" stroke-width="3"/><path d="M10 29h12M125 29h9" stroke="#fff" stroke-width="3"/></svg>`}
+function draw(){
+$('count').textContent=drivers.length;$('races').textContent=db.races;
+$('mode').textContent=running?'GRAND PRIX EN CURSO':'MODO DEMOSTRACIÓN';
+$('state').textContent=running?(paused?'Pausada':'En vivo'):(open?'Abiertas':'Cerradas');
+let max=drivers.length?Math.max(...drivers.map(d=>d.progress)):0;
+$('lap').textContent='VUELTA '+(running?Math.min(3,Math.floor(max*3)+1):0)+' / 3';
+$('arena').querySelectorAll('.car').forEach(e=>e.remove());
+drivers.forEach((d,i)=>{let angle=(i/Math.max(1,drivers.length))*Math.PI*2-d.progress*Math.PI*6-Math.PI/2;let x=50+36*Math.cos(angle),y=50+37*Math.sin(angle);let e=document.createElement('div');e.className='car';e.style.left=x+'%';e.style.top=y+'%';e.innerHTML=carSvg(d.color)+`<div class="driver">@${esc(d.name)} · 🏆${d.cups}</div>`;$('arena').appendChild(e)});
+$('ranking').innerHTML=drivers.length?[...drivers].sort((a,b)=>b.progress-a.progress||b.cups-a.cups).map((d,i)=>`<div class="row"><span>${i+1}. @${esc(d.name)}<br><span class="muted">${esc(d.car)}</span></span><b class="cup">🏆 ${d.cups}</b></div>`).join(''):'Esperando pilotos...';
+$('garage').innerHTML=cars.map((c,i)=>`<div class="row"><span style="color:${c[1]}">◆</span><span>${c[0]}</span><span class="muted">${i===0?'Inicial':(i*2)+' copas'}</span></div>`).join('');
+$('join').disabled=!open||running;$('start').disabled=running||drivers.length<2;
+}
+function tick(t){if(!running||paused)return;if(!last)last=t;let dt=Math.min(50,t-last);last=t;drivers.forEach(d=>d.progress=Math.min(1,d.progress+d.speed*dt*(.94+Math.random()*.12)));let winner=drivers.find(d=>d.progress>=1);draw();if(winner){running=false;db.cups[winner.name]=(db.cups[winner.name]||0)+1;db.races++;winner.cups=db.cups[winner.name];save();$('winnerName').textContent='@'+winner.name;$('winner').classList.add('show');log('🏆 '+winner.name+' ganó una copa');draw();return}raf=requestAnimationFrame(tick)}
+$('join').onclick=()=>{if(add($('username').value))$('username').value='';else log('No se pudo registrar. Revisa el nombre o las inscripciones.')};
+$('username').addEventListener('keydown',e=>{if(e.key==='Enter')$('join').click()});
+$('reg').onclick=()=>{if(running)return;open=!open;$('reg').textContent=open?'CERRAR INSCRIPCIONES':'ABRIR INSCRIPCIONES';draw()};
+$('start').onclick=()=>{if(drivers.length<2){log('Necesitas al menos 2 pilotos.');return}drivers.forEach(d=>d.progress=0);finished=[];running=true;paused=false;open=false;last=0;$('winner').classList.remove('show');$('reg').textContent='ABRIR INSCRIPCIONES';log('¡Comienza la carrera de 3 vueltas!');draw();cancelAnimationFrame(raf);raf=requestAnimationFrame(tick)};
+$('pause').onclick=()=>{if(!running)return;paused=!paused;$('pause').textContent=paused?'▶ REANUDAR':'Ⅱ PAUSAR';if(paused)cancelAnimationFrame(raf);else{last=0;raf=requestAnimationFrame(tick)}draw()};
+$('reset').onclick=()=>{cancelAnimationFrame(raf);drivers=[];running=false;paused=false;open=true;last=0;$('winner').classList.remove('show');$('pause').textContent='Ⅱ PAUSAR';$('reg').textContent='CERRAR INSCRIPCIONES';log('Nueva carrera lista. Las copas quedan guardadas en este navegador.');draw()};
+draw();
+</script></body></html>
